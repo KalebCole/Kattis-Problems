@@ -1,8 +1,12 @@
 n = int(input())
-balance = 0
-min_balance = 0
-for _ in range(n):
-    m = int(input())
-    balance += m
-    min_balance = max(-balance, min_balance)
-print(min_balance)
+
+sum = 0
+max_deficit = 0
+for i in range(n):
+    sum += int(input())
+    if sum < 0 and abs(max_deficit) < abs(sum):
+        max_deficit = sum
+        
+print(abs(max_deficit))
+
+    

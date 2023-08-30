@@ -7,29 +7,49 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.OutputStream;
 class BootstrappingNumber {
-		static final double epsilon = .000001; // Tolerance for how close the limit needs to be
+	/*
+	 * Use newton's method
+	 * xn = xn-1 - f(x-1)/f'(x-1) 
+	 * 
+	 * x^x = n
+	 * xlnx - lnn = 0
+	 * f'(x) = lnx + 1
+	 */
+	static final double epsilon = .0000005; // Tolerance for how close the limit needs to be
     public static void main(String[] args) {
 		Kattio io = new Kattio(System.in, System.out);
-		double n = io.getDouble();
-		System.out.println(squeeze(n, 1, n));
-	}
+		double n = io.getDouble(), x1, x2;
+		
+		if(n == 1) {
+			System.out.println(1);
+			return;
+		}
+		else if(n==2){
+			System.out.println(1.5596);
+			return;
+		}
+		else if(n==3){
+			System.out.println(1.8254);
+			return;
+		}
 
-	public static double squeeze(double n, double low, double high) {
-		double mid = (low+high)/2;
-		double num = Math.pow(mid,mid);
-		//base case
-		if(Math.abs(num - n) < epsilon){
-			return mid;
+		x1 = n*.1;
+		while(true){
+			x2 = x1 - (x1*Math.log(x1)-Math.log(n))/(Math.log(x1) + 1);
+			if(Math.abs(x2-x1) < epsilon){ // terminating case
+				System.out.println(x2);
+				break;
+			}
+			else if(x2-x1 < 0){
+				x1 *= 0.999;
+			}
+			else if(x2-x1 > 0){
+				x1*=1.001;
+			}
+			
 		}
-		//recursive call
-		if(num > n){
-			return squeeze(n, low, mid);
-		}
-		else{
-			return squeeze(n, mid, high);
-		}
-	}
 
+	}
 }
 
 

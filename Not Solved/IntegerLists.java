@@ -52,7 +52,7 @@ class IntegerLists {
 				if (i == leftDrops)
 					io.print("["+nums[i]+","); // first one
 				else if (i == nums.length - rightDrops - 1)
-					io.print(+nums[i]+"]"); // last one
+					io.print(nums[i]+"]"); // last one
 				else
 					io.print(nums[i]+",");
 			}
@@ -62,7 +62,7 @@ class IntegerLists {
 				if (i == nums.length - 1 - rightDrops)
 					io.print("["+nums[i]+","); // first one
 				else if (i == leftDrops)
-					io.print(+nums[i]+"]"); // last one
+					io.print(nums[i]+"]"); // last one
 				else
 					io.print(nums[i]+",");
 			}
