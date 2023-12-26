@@ -1,5 +1,6 @@
-
+# Folders and dotfiles
 bin
+.vscode
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # https://github.com/github/gitignore/blob/main/Java.gitignore
