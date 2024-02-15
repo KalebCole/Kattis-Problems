@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+
 class Kattio extends PrintWriter {
 	public Kattio(InputStream i) {
 		super(new BufferedOutputStream(System.out));
