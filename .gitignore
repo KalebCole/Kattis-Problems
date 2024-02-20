@@ -1,6 +1,7 @@
 # Folders and dotfiles
 bin
 .vscode
+/ICPC\ Programs/
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # https://github.com/github/gitignore/blob/main/Java.gitignore

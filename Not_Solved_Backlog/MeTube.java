@@ -20,6 +20,37 @@
  * Time Complexity: O(N^2)
  * 
  */
-public class MeTube {
 
+import java.util.Set;
+
+public class MeTube {
+    public static void main(String[] args) {
+        
+    }
+
+    public static Video[] getInputs() {
+        return null;
+    }
+
+    public static int calculateLength(Video[] videos) {
+        int length = 0;
+        return length;
+    }
+
+    
+
+    // public static boolean calculateMinimumLength(int currentMin, int temp) {
+        
+    // }
+
+}
+class Video{
+    int time;
+    Set<Character> categories;
+    public Video(int time, Set<Character> categories) {
+        this.time = time;
+        this.categories = categories;
+    }
+
+    
 }
