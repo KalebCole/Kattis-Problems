@@ -1,4 +1,5 @@
 # Folders and dotfiles
+.gitignore
 bin
 .vscode
 /ICPC\ Programs/
