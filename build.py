@@ -48,6 +48,8 @@ for file in os.listdir(solved_dir):
     # Extract the problem slug and file extension
     problem_slug, extension = os.path.splitext(file)
     extension = extension.lstrip('.')  # Remove leading dot
+    if '_' in problem_slug:
+        problem_slug = problem_slug.replace('_', '')
 
     # Construct the URL for the problem
     problem_url = f'https://open.kattis.com/problems/{problem_slug.lower()}'
