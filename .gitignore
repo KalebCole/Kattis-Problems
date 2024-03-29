@@ -2,6 +2,7 @@
 .gitignore
 bin
 .vscode
+.env
 /ICPC\ Programs/
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
