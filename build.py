@@ -70,8 +70,74 @@ with open('README.md', 'w') as readme_file:
     readme_file.write(f'## Total Problems: {len(kt.problems())}\n')
     readme_file.writelines(readme_contents)
 
-# Generate HTML documentation
-soup = BeautifulSoup("<html><body><h1>Solved Problems</h1></body></html>", 'html.parser')
+# Generate HTML documentation with styling
+html_template = """<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kattis Problems - Simple Table</title>
+  <style>
+   body {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f5f5f5;
+   }
+   .nav-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background: #00ffff;
+    color: #0a0e27;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s;
+   }
+   .nav-link:hover {
+    background: #00cccc;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,255,255,0.3);
+   }
+   h1 {
+    color: #333;
+   }
+   table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+   }
+   th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+   }
+   th {
+    background: #0a0e27;
+    color: #00ffff;
+    font-weight: bold;
+   }
+   tr:hover {
+    background: #f9f9f9;
+   }
+   a {
+    color: #0066cc;
+    text-decoration: none;
+   }
+   a:hover {
+    text-decoration: underline;
+   }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="nav-link">← Back to Interactive Dashboard</a>
+  <h1>Solved Problems</h1>
+</body>
+</html>"""
+
+soup = BeautifulSoup(html_template, 'html.parser')
 soup.body.append(soup.new_tag('p', string=f'Last updated: {today}'))
 
 # Create a table for the problems
