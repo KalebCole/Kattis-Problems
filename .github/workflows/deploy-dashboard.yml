@@ -1,0 +1,56 @@
+name: Deploy Kattis Dashboard to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch: # Allows manual trigger
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Generate dashboard
+        run: |
+          python generate_dashboard.py
+          echo "Dashboard generated successfully!"
+          ls -lh kattis_dashboard.html
+
+      - name: Create deployment directory
+        run: |
+          mkdir -p _site
+          cp kattis_dashboard.html _site/index.html
+          cp -r images _site/images 2>/dev/null || echo "No images directory"
+          echo "Deployment directory created"
+          ls -la _site/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3

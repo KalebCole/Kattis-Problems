@@ -5,6 +5,9 @@ bin
 .env
 /ICPC\ Programs/
 
+# Generated dashboard (auto-generated from template)
+kattis_dashboard.html
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # https://github.com/github/gitignore/blob/main/Java.gitignore
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

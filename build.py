@@ -111,3 +111,18 @@ with open('index.html', 'w') as html_file:
     html_file.write(soup.prettify())
 
 print('Documentation generation completed.')
+
+# Optionally generate the interactive dashboard
+try:
+    import subprocess
+    print('\nGenerating interactive dashboard...')
+    result = subprocess.run(['python', 'generate_dashboard.py'],
+                          capture_output=True,
+                          text=True)
+    if result.returncode == 0:
+        print('Interactive dashboard generated successfully!')
+        print('Open kattis_dashboard.html to view your progress.')
+    else:
+        print('Note: Dashboard generation skipped (generate_dashboard.py not found or error occurred)')
+except Exception as e:
+    print(f'Note: Dashboard generation skipped ({str(e)})')
