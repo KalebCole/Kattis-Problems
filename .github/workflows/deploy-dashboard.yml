@@ -36,14 +36,10 @@ jobs:
       - name: Create deployment directory
         run: |
           mkdir -p _site
-          # Copy dashboard as main index
+          # Copy dashboard as main index (only page)
           cp kattis_dashboard.html _site/index.html
-          # Copy existing table page
-          cp index.html _site/table.html
-          # Copy images directory
-          cp -r images _site/images 2>/dev/null || echo "No images directory"
-          # Copy README for GitHub
-          cp README.md _site/README.md 2>/dev/null || echo "No README"
+          # Copy images directory if it exists
+          cp -r images _site/images 2>/dev/null || echo "No images directory found"
           echo "Deployment directory created"
           ls -la _site/
 
